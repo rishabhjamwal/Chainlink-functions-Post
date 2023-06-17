@@ -1,11 +1,76 @@
-<form action="/hello" method="POST" >
-    <h3>Sign In</h3>
-
-   
-
-    <label for="RollNo" style="margin-top:140px  ;">Enter your Roll Number</label>
-    <input name="roll" placeholder="Your Roll Number" id="RollNo" required>
-
-    <button style="margin-top:180px  ;">Submit</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credential Verification</title>
+  <style>
+    /* CSS Styling */
+    body {
+      font-family: Arial, sans-serif;
+    }
     
-</form>
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    
+    .header img {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .heading {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    
+    .form-container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .form-container form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .form-container input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+    
+    .form-container input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="/views/images.png" alt="Miet Logo" >
+  </div>
+  
+  <h1 class="heading">Credential Verification</h1>
+  
+  <div class="form-container">
+    <form action="/hello" method="post">
+      <input type="text" name="roll" placeholder="Enter your roll number">
+      <input type="submit" value="Verify">
+    </form>
+  </div>
+</body>
+</html>

@@ -8,7 +8,8 @@ const port = 8000;
 // app.use(expressLayouts);
 //telling express to use express layouts
 
-// app.use(express.static('./assets'));
+app.use(express.static('/views'));
+
 //this is to tell express to look for assets for any css/js/image files
 //extract style and scripts from sub pages into the layouts
 // app.set('layout extractStyles',true);

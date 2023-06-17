@@ -31,13 +31,14 @@ if (!countryData || !countryData.student || countryData.student.length === 0) {
 console.log("Student response", countryData);
 
 // Extract required values from the response
-const { Name: studentname, RollNumber: rollno, DateofAdmission: admissiondate } = countryData["student"][0];
+const { Name: studentname, RollNumber: rollno, DateofAdmission: admissiondate, CocubesScore: cocubesscore } = countryData["student"][0];
 
 // Create the result object
 const result = {
   studentname,
   rollno,
   admissiondate,
+  cocubesscore,
 };
 console.log(result);
 console.log("output is", test);

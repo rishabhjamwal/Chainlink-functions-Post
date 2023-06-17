@@ -65,7 +65,7 @@ task("functions-simulate", "Simulates an end-to-end fulfillment locally for the 
     const unvalidatedRequestConfig = require(path.isAbsolute(taskArgs.configpath)
       ? taskArgs.configpath
       : path.join(process.cwd(), taskArgs.configpath))
-    console.log("The file is :", unvalidatedRequestConfig);
+    
     const requestConfig = getRequestConfig(unvalidatedRequestConfig)
     // Fetch the mock DON public key
     const DONPublicKey = await oracle.getDONPublicKey()

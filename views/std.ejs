@@ -1,0 +1,185 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    color: #333;
+    text-align: center;
+  }
+
+  .student-info {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .student-info p {
+    margin: 10px 0;
+  }
+
+  .score-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .score-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .score-list li span {
+    font-weight: bold;
+  }
+</style>
+
+<h1>VERIFIED STUDENT DETAILS ON BLOCKCHAIN</h1>
+
+<div class="student-info">
+    <div class = "student-info">
+        <p><span>Name:</span> <%= Name %></p>
+        <p><span>Roll Number:</span> <%= RollNumber %></p>
+        <p><span>Date of Admission:</span> <%= DateofAdmission %></p>
+        <p><span>PassoutYear:</span> <%= PassoutYear %></p>
+        <p><span>Date of Birth:</span> <%= DOB %></p>
+        <p><span>Course:</span> <%= Course %></p>
+        <p><span>Gender:</span> <%= Gender %></p>
+        <p><span>Academic Index:</span> <%= AcademicIndex %></p>
+        <body>
+
+    </div>       
+        
+    <% if (CocubesScore.length > 0) { %>
+      <h1>Cocubes Score</h1>
+    
+      <ul>
+        <% CocubesScore.forEach(function(score) { %>
+          <li>
+            <h2>Overall Score: <%= score.OverallScoreOutof800 %></h2>
+            <p><strong>Aptitude:</strong> <%= score.Aptitude %></p>
+            <p><strong>English:</strong> <%= score.English %></p>
+            <p><strong>Quantative:</strong> <%= score.Quantative %></p>
+            <p><strong>Analytical:</strong> <%= score.Analytical %></p>
+            <p><strong>Domain:</strong> <%= score.Domain %></p>
+            <p><strong>Computer Fundamental:</strong> <%= score.Computer_Fundamental %></p>
+            <p><strong>Coding:</strong> <%= score.Coding %></p>
+            <p><strong>Written English:</strong> <%= score.WrittenEnglish %></p>
+            <p><strong>Personality:</strong> <%= score.Personality %></p>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </body>
+  <div class="student-info">
+    <p><span>Extra Curricular Index:</span> <%= ExtraCurricularIndex %></p>
+    <p><span>Co-Curricular Index:</span> <%= CoCurricularIndex %></p>
+    <p><span>Overall Index:</span> <%= OverallIndex %></p>
+    <p><span>Entrance Score:</span> <%= EntranceScore %></p>
+  </div>
+ 
+  <body>
+  <h1>Education</h1>
+  
+  <ul>
+    <% Education.forEach(function(education) { %>
+      <li>
+        <h2><%= education.Degree_Type %></h2>
+        <p><strong>Board:</strong> <%= education.Board %></p>
+        <p><strong>School:</strong> <%= education.School %></p>
+        <p><strong>State:</strong> <%= education.State %></p>
+        <p><strong>City:</strong> <%= education.City %></p>
+        <p><strong>Completion Status:</strong> <%= education.Status %></p>
+        <p><strong>Marks:</strong> <%= education.Marks %></p>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+<body>
+    <h1>Detailed Academics</h1>
+    
+    <ul>
+      <% DetailedAcademics.forEach(function(academic) { %>
+        <li>
+          <h2>Semester <%= academic.Semester %></h2>
+          <p><strong>Percentage:</strong> <%= academic.Percentage %></p>
+        </li>
+      <% }); %>
+    </ul>
+  </body>
+  <p><strong>Overall Academics:</strong> <%= OverallAcademics %></p>
+
+  <body>
+    <% if (Certifications.length > 0) { %>
+      <h1>Certifications</h1>
+    
+      <ul>
+        <% Certifications.forEach(function(certification) { %>
+          <li>
+            <h2><%= certification.CertificationName %></h2>
+            <p><strong>Valid From:</strong> <%= certification.ValidFrom %></p>
+            <p><strong>Valid To:</strong> <%= certification.ValidTo %></p>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </body>
+  <body>
+    <% if (Projects.length > 0) { %>
+      <h1>Projects</h1>
+    
+      <ul>
+        <% Projects.forEach(function(project) { %>
+          <li>
+            <h2><%= project.ProjectTitle %></h2>
+            <p><strong>Description:</strong> <%= project.ProjectDesc %></p>
+            <p><strong>Start Date:</strong> <%= project.ProjectStartDate %></p>
+            <p><strong>End Date:</strong> <%= project.ProjectEndDate %></p>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </body>
+  <body>
+    <% if (Internships.length > 0) { %>
+      <h1>Internships</h1>
+      <ul>
+        <% Internships.forEach(function(internship) { %>
+          <li>
+            <h2><%= internship.Profile_Name %></h2>
+            <p><strong>Company:</strong> <%= internship.CompanyName %></p>
+            <p><strong>Stipend:</strong> <%= internship.Stipend %></p>
+            <p><strong>Start Date:</strong> <%= internship.StartDate %></p>
+            <p><strong>End Date:</strong> <%= internship.EndDate %></p>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </body>
+  <body>
+    <% if (Experience.length > 0) { %>
+      <h1>Experience</h1>
+  
+      <ul>
+        <% for (let i = 0; i < Experience.length; i++) { %>
+          <li>
+            <h2><%= Experience[i].OrganizationName %></h2>
+            <p><strong>Joining Date:</strong> <%= Experience[i].JoiningDate %></p>
+            <p><strong>Leaving Date:</strong> <%= Experience[i].LeavingDate %></p>
+            <p><strong>Designation:</strong> <%= Experience[i].Designation %></p>
+            <p><strong>Sector:</strong> <%= Experience[i].Sector %></p>
+          </li>
+        <% } %>
+      </ul>
+    <% } %>
+  
+  </body>
+  <p><strong>State:</strong> <%= State %></p>
+  <p><strong>City:</strong> <%= City %></p>  
+</div>

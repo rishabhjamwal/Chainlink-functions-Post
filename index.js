@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const port = 8000;
 
@@ -9,7 +10,11 @@ const port = 8000;
 //telling express to use express layouts
 
 app.use(express.static('/views'));
-
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true
+  }));
 //this is to tell express to look for assets for any css/js/image files
 //extract style and scripts from sub pages into the layouts
 // app.set('layout extractStyles',true);

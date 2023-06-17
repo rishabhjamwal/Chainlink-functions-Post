@@ -40,8 +40,12 @@ const result = {
   admissiondate,
   cocubesscore,
 };
-console.log(result);
-console.log("output is", test);
+function returnUpdatedValue(){
+  return result;
+}
+// // console.log(result);
+// // console.log("output is", test);
+
 
 
 // Use JSON.stringify() to convert from JSON object to JSON string

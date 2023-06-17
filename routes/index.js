@@ -8,6 +8,7 @@ const execSync =require('child_process').execSync;
 var test;
 console.log('router loaded');
 var r=require('./configTemplate.js');
+const { match } = require('assert');
 
 router.get('/', function(req, res){
     return res.render('index');
@@ -17,17 +18,54 @@ router.get('/studentdata', function(req, res){
     return res.render('std');
 });
 
+  
+  
+  
+
 router.post('/hello', async function(req,res){
-    // async function func(){
     
-    //     // const execSync = require('child_process').execSync;
+    // function fetchLinkFromConsoleOutput(consoleOutput) {
+    //     const regex = /https:\/\/mumbai\.polygonscan\.com\/tx\/[a-zA-Z0-9]+/;
+    //     const match = consoleOutput.match(regex);
         
-    //     const output =  execSync('npx hardhat functions-simulate --configpath routes/config.js', { encoding: 'utf-8' }); 
-    //      // the default is 'buffer'
-    //     console.log('Output was:\n', output);
-    // }
+    //     if (match) {
+    //       return match[0];
+    //     } else {
+    //       return null;
+    //     }
+        
+    //   } 
+
+    // const dynamicConsoleOutput = runScript()  
     test= req.body.roll;
     const inputRollNumber =test;
+    
+    async function fetchLatestTransaction() {
+        try {
+          const response = await axios.get(`https://api-testnet.polygonscan.com/api?module=account&action=txlist&address=0x3E906e3e2eCDEcde976EF05b853590E94b7f8d4e&startblock=0&endblock=99999999&sort=desc&apikey=PQ84BZTK8GFWN9WN53G4Y33AUSD5T5GPFD`);
+          const data = response.data;
+          
+          // Retrieve the latest transaction
+          const latestTransaction = data.result[0];
+          
+          // Extract the transaction details
+          const transactionHash = latestTransaction.hash;
+          const blockNumber = latestTransaction.blockNumber;
+          const timestamp = latestTransaction.timeStamp;
+          
+          // Output the transaction details
+          
+          console.log('Latest Transaction:');
+          console.log('Transaction Hash:', transactionHash);
+          console.log('Block Number:', blockNumber);
+          console.log('Timestamp:', new Date(timestamp * 1000));
+          req.session.data = transactionHash;
+          res.render('std', { transactionHash: transactionHash });
+       
+        } catch (error) {
+          console.error('Error:', error.message);
+        }
+      }
 
     const url = "https://pi360.net/site/api/student_meta_data.php";
     const instituteId = "mietjammu";
@@ -43,6 +81,7 @@ router.post('/hello', async function(req,res){
     req.session.data = jdata
 
     const sessionData = JSON.parse(jdata);
+
     const { student } = sessionData;
     const { 
         Name,
@@ -90,10 +129,33 @@ router.post('/hello', async function(req,res){
     await createFile();
     await createConfigFileWithArgs(test);
 
-    // await runScript();
+    await runScript()
+    // await fetchLatestTransaction();
+    const response = await axios.get(`https://api-testnet.polygonscan.com/api?module=account&action=txlist&address=0x3E906e3e2eCDEcde976EF05b853590E94b7f8d4e&startblock=0&endblock=99999999&sort=desc&apikey=PQ84BZTK8GFWN9WN53G4Y33AUSD5T5GPFD`);
+    const data = response.data;
+          
+          // Retrieve the latest transaction
+    const latestTransaction = data.result[0];
+          
+          // Extract the transaction details
+    const transactionHash = latestTransaction.hash;
+    const blockNumber = latestTransaction.blockNumber;
+    const timestamp = latestTransaction.timeStamp;
+          
+          // Output the transaction details
+          
+    console.log('Latest Transaction:');
+    console.log('Transaction Hash:', transactionHash);
+    console.log('Block Number:', blockNumber);
+    console.log('Timestamp:', new Date(timestamp * 1000));
+    // fetchLinkFromConsoleOutput(dynamicConsoleOutput);
+    // const link = fetchLinkFromConsoleOutput(dynamicConsoleOutput);
+    // console.log("Mahesh dalle", link)
     
     // const updatedResult = returnUpdatedValue();
     // console.log(updatedResult.admissiondate);
+    req.session.data = transactionHash;
+    // return res.render('std', { transactionHash: transactionHash });
    
     return res.render('std', { 
         Name,
@@ -117,7 +179,10 @@ router.post('/hello', async function(req,res){
         Internships,
         Experience,
         State,
-        City
+        City,
+        transactionHash
+        
+        
     });
 
 });

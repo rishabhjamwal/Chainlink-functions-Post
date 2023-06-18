@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VERIFIED CREDENTIALS</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -18,6 +22,18 @@
     padding: 20px;
     margin-top: 20px;
   }
+  .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+
+    .header img {
+      width: 150px;
+      height: 60px;
+    }  
 
   .student-info p {
     margin: 10px 0;
@@ -38,7 +54,17 @@
   .score-list li span {
     font-weight: bold;
   }
+  
 </style>
+</head>
+
+
+<body>
+  <%- include('header') %>
+
+  <!-- Rest of your HTML content -->
+
+</body>
 
 <h1>VERIFIED STUDENT DETAILS ON BLOCKCHAIN</h1>
 <a href="https://mumbai.polygonscan.com/tx/<%= transactionHash %>">

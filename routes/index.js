@@ -6,9 +6,18 @@ const axios = require('axios')
 // const {returnUpdatedValue} = require("./source");
 const execSync =require('child_process').execSync;
 var test;
+
 console.log('router loaded');
 var r=require('./configTemplate.js');
-const { match } = require('assert');
+
+isLoading = true;
+// window.addEventListener("load",()=>{
+//     const loader = document.querySelector(".loader");
+//     loader.classList.add("loader-hidden");
+//     loader.addEventListener("transitionend",()=>{
+//         document.body.removeChild("loader");
+//     })
+// })
 
 router.get('/', function(req, res){
     return res.render('index');
@@ -40,32 +49,7 @@ router.post('/hello', async function(req,res){
     test= req.body.roll;
     const inputRollNumber =test;
     
-    async function fetchLatestTransaction() {
-        try {
-          const response = await axios.get(`https://api-testnet.polygonscan.com/api?module=account&action=txlist&address=0x3E906e3e2eCDEcde976EF05b853590E94b7f8d4e&startblock=0&endblock=99999999&sort=desc&apikey=PQ84BZTK8GFWN9WN53G4Y33AUSD5T5GPFD`);
-          const data = response.data;
-          
-          // Retrieve the latest transaction
-          const latestTransaction = data.result[0];
-          
-          // Extract the transaction details
-          const transactionHash = latestTransaction.hash;
-          const blockNumber = latestTransaction.blockNumber;
-          const timestamp = latestTransaction.timeStamp;
-          
-          // Output the transaction details
-          
-          console.log('Latest Transaction:');
-          console.log('Transaction Hash:', transactionHash);
-          console.log('Block Number:', blockNumber);
-          console.log('Timestamp:', new Date(timestamp * 1000));
-          req.session.data = transactionHash;
-          res.render('std', { transactionHash: transactionHash });
-       
-        } catch (error) {
-          console.error('Error:', error.message);
-        }
-      }
+    
 
     const url = "https://pi360.net/site/api/student_meta_data.php";
     const instituteId = "mietjammu";
@@ -130,6 +114,8 @@ router.post('/hello', async function(req,res){
     await createConfigFileWithArgs(test);
 
     await runScript()
+
+    isLoading = false;
     // await fetchLatestTransaction();
     const response = await axios.get(`https://api-testnet.polygonscan.com/api?module=account&action=txlist&address=0x3E906e3e2eCDEcde976EF05b853590E94b7f8d4e&startblock=0&endblock=99999999&sort=desc&apikey=PQ84BZTK8GFWN9WN53G4Y33AUSD5T5GPFD`);
     const data = response.data;

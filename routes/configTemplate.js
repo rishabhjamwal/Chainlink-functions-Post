@@ -48,5 +48,5 @@ const requestConfig = {
 }
 
 
-console.log(requestConfig.args);
+
 module.exports = requestConfig;

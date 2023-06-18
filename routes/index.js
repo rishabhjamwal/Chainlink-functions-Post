@@ -127,6 +127,7 @@ router.post('/hello', async function(req,res){
     const transactionHash = latestTransaction.hash;
     const blockNumber = latestTransaction.blockNumber;
     const timestamp = latestTransaction.timeStamp;
+    req.session.data = {transactionHash, blockNumber, timestamp}
           
           // Output the transaction details
           
@@ -140,7 +141,7 @@ router.post('/hello', async function(req,res){
     
     // const updatedResult = returnUpdatedValue();
     // console.log(updatedResult.admissiondate);
-    req.session.data = transactionHash;
+    
     // return res.render('std', { transactionHash: transactionHash });
    
     return res.render('std', { 
@@ -166,7 +167,10 @@ router.post('/hello', async function(req,res){
         Experience,
         State,
         City,
-        transactionHash
+        transactionHash,
+        blockNumber,
+        timestamp
+
         
         
     });

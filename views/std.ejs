@@ -54,6 +54,29 @@
   .score-list li span {
     font-weight: bold;
   }
+  .transaction-details {
+    position: inherit;
+    display: flex;
+    justify-content:space-between;
+    align-content: flex-end;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 40px;
+    margin-top: 20px;
+  }
+  .my-button{
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
   
 </style>
 </head>
@@ -67,13 +90,24 @@
 </body>
 
 <h1>VERIFIED STUDENT DETAILS ON BLOCKCHAIN</h1>
-<a href="https://mumbai.polygonscan.com/tx/<%= transactionHash %>">
+<!-- <a href="https://mumbai.polygonscan.com/tx/<%= transactionHash %>">
   <%= transactionHash %>
-</a>
+</a> -->
 
 
 <div class="student-info">
-    <div class = "student-info">
+    <br class = "student-info">
+      <h3>Transaction Details from polygonscan</h3>
+      <div class = "transaction-details">
+        
+        <p><strong>Transaction Hash:</strong> <%= transactionHash %></p>
+        <p><strong>Block Number:</strong> <%= blockNumber %></p>
+        <p><strong>Time Stamp:</strong> <%= timestamp %></p>
+        <button class="my-button" onclick="window.open('https://mumbai.polygonscan.com/tx/<%= transactionHash %>', '_blank')">Verification Source</button>
+
+
+      </div>
+      <br></br>
         <p><span>Name:</span> <%= Name %></p>
         <p><span>Roll Number:</span> <%= RollNumber %></p>
         <p><span>Date of Admission:</span> <%= DateofAdmission %></p>

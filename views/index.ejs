@@ -121,6 +121,7 @@
   <script>
     $(document).ready(function() {
       var loadingTitles = [
+      'Estalishing connections with Chainlink.....', 
       'Initializing Request......',
       'Fetching Node.......',
       'Interacting with off-Chain data via Decentralised Oracle Network.............',
@@ -144,8 +145,9 @@
       // Function to show the loading spinner
       function showLoadingSpinner() {
         $('#loading-spinner').show();
+        setInterval(updateLoadingText, 8000);
       }
-      setInterval(updateLoadingText, 10000);
+      
   
       // Function to hide the loading spinner
       function hideLoadingSpinner() {
